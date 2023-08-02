@@ -1,0 +1,129 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Port Scanner - Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: linear-gradient(to right, #e8f0fe, #c0d6ff);
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-top: 0;
+        }
+        
+        p {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+        
+        li {
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .back-link {
+            display: inline-block;
+            background-color: dodgerblue;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        
+        .back-link:hover {
+            background-color: #1e90ff;
+        }
+
+        /* Input çerçeve stil özellikleri */
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            outline: none;
+            border-color: dodgerblue;
+        }
+
+        input[type="submit"] {
+            background-color: dodgerblue;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #1e90ff;
+        }
+
+        /* Yeni input çerçeve stil özellikleri */
+        .form-group input[type="text"],
+        .form-group input[type="number"] {
+            border: 1px solid dodgerblue;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Port Scanner - Results</h1>
+        <div>
+            <p><strong>Scanning target:</strong></p>
+            <input type="text" value="{{ target_input }}" readonly>
+            <p><strong>Scanning started at:</strong> {{ scanning_time }}</p>
+        </div>
+        {% if open_ports %}
+            <h2>Open Ports:</h2>
+            <ul>
+                {% for port in open_ports %}
+                    <li>Port {{ port }} is open</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No open ports found</p>
+        {% endif %}
+        <a href="/" class="back-link">Back</a>
+    </div>
+</body>
+</html>
